@@ -3,7 +3,7 @@
 set(This DataStructuresTests)
 
 set(Sources
-	main.cpp
+	"dynamic-array.cpp"
 )
 
 add_executable (${This} ${Sources})

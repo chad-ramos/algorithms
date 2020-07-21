@@ -4,11 +4,11 @@ set(This DataStructures)
 
 # Add source to this project's executable.
 set(Headers
-	main.h
+	"dynamic-array.h"
 )
 
 set(Sources
-	main.cpp
+	"dynamic-array.cpp"
 )
 
 add_library (${This} STATIC ${Headers} ${Sources})
