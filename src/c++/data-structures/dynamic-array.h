@@ -1,8 +1,25 @@
-﻿// c++.h : Include file for standard system include files,
-// or project specific include files.
-
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 
-// TODO: Reference additional headers your program requires here.
+namespace data_structures
+{
+	template <typename T>
+	class DynamicArray
+	{
+	public:
+		DynamicArray();
+	
+
+		void Empty();
+		void RemoveAt(int index);
+		void Add(T elm);
+		int Size();
+		bool IsFull();
+		
+	private:
+		T *arr_;
+		int max_size_; // Max amount of indexs in array
+		int length_; // Number of occupied indexes
+	};
+}
