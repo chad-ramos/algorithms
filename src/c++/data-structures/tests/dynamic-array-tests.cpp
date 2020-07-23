@@ -36,11 +36,24 @@ TEST(DynamicArray, TestRemoveAt)
 		dynamic_array.Add(values[i]);
 	}
 
-	std::cout << dynamic_array.ToString() << std::endl;
-	
 	dynamic_array.RemoveAt(1);
 
 	EXPECT_TRUE(dynamic_array.Size() == size - 1);
+}
+
+TEST(DynamicArray, TestRemoveAtAndGetValue)
+{
+	data_structures::DynamicArray<int> dynamic_array;
+
+	const int size = 5;
+	int values[size] = { 1, 2, 3, 4, 5 };
+
+	for (int i = 0; i < size; i++)
+	{
+		dynamic_array.Add(values[i]);
+	}
+
+	EXPECT_TRUE(dynamic_array.RemoveAt(1) == 2);
 }
 
 TEST(DynamicArray, SizeEqualsOne)
