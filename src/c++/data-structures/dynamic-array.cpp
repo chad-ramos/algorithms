@@ -1,29 +1,10 @@
 ﻿#pragma once
 
+#include <stdexcept>
 #include "dynamic-array.h";
 
 namespace data_structures
 {
-	template <typename T>
-	DynamicArray<T>::DynamicArray()
-	{
-		max_size_ = 1;
-		arr_ = new T[max_size_];
-		length_ = 0;
-	}
-
-	template <typename T>
-	void DynamicArray<T>::Empty()
-	{
-	}
-
-	template <typename T>
-	void DynamicArray<T>::RemoveAt(int index)
-	{
-		
-		
-	}
-
 	template <typename T>
 	void DynamicArray<T>::Add(T elm)
 	{
@@ -33,7 +14,7 @@ namespace data_structures
 
 			T* cache = new T[max_size_];
 
-			for (int i = 0; i < length_; ++i)
+			for (int i = 0; i < elements_in_array_; i++)
 			{
 				cache[i] = arr_[i];
 			}
@@ -43,19 +24,50 @@ namespace data_structures
 			arr_ = cache;
 		}
 
-		arr_[length_] = elm;
-		length_++;
+		// add to end of the array
+		arr_[elements_in_array_] = elm;
+		elements_in_array_++;
 	}
 
 	template <typename T>
-	int DynamicArray<T>::Size()
+	T DynamicArray<T>::RemoveAt(int index)
 	{
-		return length_;
+		if (elements_in_array_ < 0 || index + 1 > elements_in_array_) {
+			throw std::out_of_range("Out of range");
+		}
+		else {
+			T data = arr_[index];
+			T* cache = new T[max_size_];
+
+			int new_position = 0;
+			for (int i = 0; i < elements_in_array_; i++)
+			{
+				if (i == index) {
+					new_position++;
+				}
+				cache[i] = arr_[new_position];
+				new_position++;
+			}
+
+			delete[] arr_;
+
+			arr_ = cache;
+			elements_in_array_--;
+
+			return data;
+		}
 	}
 
 	template <typename T>
-	bool DynamicArray<T>::IsFull()
+	std::string DynamicArray<T>::ToString()
 	{
-		return length_ == max_size_;
+		std::string data = "Dynamic Array: ";
+
+		for (int i = 0; i < elements_in_array_; ++i)
+		{
+			data += std::to_string(arr_[i]) + " ";
+		}
+
+		return data;
 	}
 }
