@@ -1,9 +1,9 @@
 # Dynamic Array
 
-| Operation  | Complexity |
+| Operation | Complexity |
 |---|---|
-| Append  | O(1) |
+| Access  | O(1) |
 | Search | O(n) |
 | Insertion |  O(n) |
 | Appending | O(1) |
-| Deletion | O(n) |
+| Deletion | O(n) |q

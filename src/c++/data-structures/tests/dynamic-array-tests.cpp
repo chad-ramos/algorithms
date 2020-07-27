@@ -18,6 +18,38 @@ TEST(DynamicArray, Size)
 	EXPECT_TRUE(dynamic_array.Size() == size);
 }
 
+TEST(DynamicArray, Get)
+{
+	data_structures::DynamicArray<int> dynamic_array;
+
+	const int size = 5;
+	int values[size] = { 1, 2, 3, 4, 5 };
+
+	for (int i = 0; i < size; i++)
+	{
+		dynamic_array.Add(values[i]);
+	}
+	
+	EXPECT_TRUE(dynamic_array.Get(2) == 3);
+}
+
+TEST(DynamicArray, Set)
+{
+	data_structures::DynamicArray<int> dynamic_array;
+
+	const int size = 5;
+	int values[size] = { 1, 2, 3, 4, 5 };
+
+	for (int i = 0; i < size; i++)
+	{
+		dynamic_array.Add(values[i]);
+	}
+
+	dynamic_array.Set(1, 99);
+
+	EXPECT_TRUE(dynamic_array.Get(1) == 99);
+}
+
 TEST(DynamicArray, Empty)
 {
 	data_structures::DynamicArray<int> dynamic_array;

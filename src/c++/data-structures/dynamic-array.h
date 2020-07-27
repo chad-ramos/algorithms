@@ -18,7 +18,9 @@ namespace data_structures
 		void Add(T elm);
 		T Remove(T elm);
 		T RemoveAt(int index);
-
+		T Get(int index);
+		void Set(int index, T elm);
+		
 		int Size() { return elements_in_array_; }
 		bool IsEmpty() { return elements_in_array_ == 0; };
 		bool IsFull() { return elements_in_array_ == max_size_; }
