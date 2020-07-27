@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(DynamicArray, TestSize)
+TEST(DynamicArray, Size)
 {
 	data_structures::DynamicArray<int> dynamic_array;
 
@@ -18,13 +18,63 @@ TEST(DynamicArray, TestSize)
 	EXPECT_TRUE(dynamic_array.Size() == size);
 }
 
-TEST(DynamicArray, TestRemoveAtOverrunOverException)
+TEST(DynamicArray, Empty)
+{
+	data_structures::DynamicArray<int> dynamic_array;
+	EXPECT_TRUE(dynamic_array.IsEmpty());
+}
+
+TEST(DynamicArray, OutOfBoundsHigh)
 {
 	data_structures::DynamicArray<int> dynamic_array;
 	EXPECT_ANY_THROW(dynamic_array.RemoveAt(5));
 }
 
-TEST(DynamicArray, TestRemoveAt)
+TEST(DynamicArray, OutOfBoundsLow)
+{
+	data_structures::DynamicArray<int> dynamic_array;
+	EXPECT_ANY_THROW(dynamic_array.RemoveAt(-1));
+}
+
+TEST(DynamicArray, RemoveWithIntType)
+{
+	data_structures::DynamicArray<int> dynamic_array;
+	const int size = 5;
+	int values[size] = { 1, 2, 3, 4, 5 };
+
+	for (int i = 0; i < size; i++)
+	{
+		dynamic_array.Add(values[i]);
+	}
+
+	int value;
+	int target = 2;
+	value = dynamic_array.Remove(target);
+
+	EXPECT_TRUE(value == target);
+	EXPECT_TRUE(dynamic_array.Size() == size - 1);
+}
+
+TEST(DynamicArray, RemoveWithStringType)
+{
+	data_structures::DynamicArray<std::string> dynamic_array;
+	const int size = 5;
+
+	std::string values[size] = { "1", "2", "3", "4", "5" };
+	for (int i = 0; i < size; i++)
+	{
+		dynamic_array.Add(values[i]);
+	}
+
+	std::string value;
+	std::string target = "4";
+	value = dynamic_array.Remove(target);
+	
+	EXPECT_TRUE(value == target);
+	EXPECT_TRUE(dynamic_array.Size() == size - 1);
+}
+
+TEST(DynamicArray, RemoveAt)
 {
 	data_structures::DynamicArray<int> dynamic_array;
 
@@ -39,21 +89,6 @@ TEST(DynamicArray, TestRemoveAt)
 	dynamic_array.RemoveAt(1);
 
 	EXPECT_TRUE(dynamic_array.Size() == size - 1);
-}
-
-TEST(DynamicArray, TestRemoveAtAndGetValue)
-{
-	data_structures::DynamicArray<int> dynamic_array;
-
-	const int size = 5;
-	int values[size] = { 1, 2, 3, 4, 5 };
-
-	for (int i = 0; i < size; i++)
-	{
-		dynamic_array.Add(values[i]);
-	}
-
-	EXPECT_TRUE(dynamic_array.RemoveAt(1) == 2);
 }
 
 TEST(DynamicArray, SizeEqualsOne)

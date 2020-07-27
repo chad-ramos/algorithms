@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <stdexcept>
+#include <stdexcept>;
 #include "dynamic-array.h";
 
 namespace data_structures
@@ -14,7 +14,7 @@ namespace data_structures
 
 			T* cache = new T[max_size_];
 
-			for (int i = 0; i < elements_in_array_; i++)
+			for (int i = 0; i < elements_in_array_; ++i)
 			{
 				cache[i] = arr_[i];
 			}
@@ -24,27 +24,58 @@ namespace data_structures
 			arr_ = cache;
 		}
 
-		// add to end of the array
 		arr_[elements_in_array_] = elm;
 		elements_in_array_++;
 	}
 
 	template <typename T>
+	T DynamicArray<T>::Remove(T elm)
+	{
+		bool found = false;
+		T data;
+
+		T* cache = new T[max_size_];
+		for (int i = 0; i < elements_in_array_; ++i)
+		{
+			if (elm == arr_[i])
+			{
+				data = arr_[i];
+				found = true;
+			}
+			else
+			{
+				cache[i] = arr_[i];
+			}
+		}
+
+		if (found)
+		{
+			delete[] arr_;
+			arr_ = cache;
+			elements_in_array_--;
+		}
+
+		return data;
+	}
+
+	template <typename T>
 	T DynamicArray<T>::RemoveAt(int index)
 	{
-		if (elements_in_array_ < 0 || index + 1 > elements_in_array_) {
-			throw std::out_of_range("Out of range");
+		if (index < 0 || index + 1 > elements_in_array_) {
+			throw std::out_of_range("Out of bounds");
 		}
 		else {
 			T data = arr_[index];
+
 			T* cache = new T[max_size_];
 
 			int new_position = 0;
-			for (int i = 0; i < elements_in_array_; i++)
+			for (int i = 0; i < elements_in_array_; ++i)
 			{
-				if (i == index) {
+				if (i == index) { // If we have a match, skip it
 					new_position++;
 				}
+
 				cache[i] = arr_[new_position];
 				new_position++;
 			}
@@ -65,7 +96,7 @@ namespace data_structures
 
 		for (int i = 0; i < elements_in_array_; ++i)
 		{
-			data += std::to_string(arr_[i]) + " ";
+			data += std::to_string(arr_[i]) + ", ";
 		}
 
 		return data;

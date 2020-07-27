@@ -15,11 +15,12 @@ namespace data_structures
 			elements_in_array_ = 0;
 		};
 
-		T RemoveAt(int index);
 		void Add(T elm);
+		T Remove(T elm);
+		T RemoveAt(int index);
 
 		int Size() { return elements_in_array_; }
-		void Empty() { return elements_in_array_ == 0; };
+		bool IsEmpty() { return elements_in_array_ == 0; };
 		bool IsFull() { return elements_in_array_ == max_size_; }
 		int MaxSize() { return max_size_; }
 		std::string ToString();
