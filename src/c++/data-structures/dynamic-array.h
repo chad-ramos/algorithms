@@ -8,23 +8,18 @@ namespace data_structures
 	class DynamicArray
 	{
 	public:
-		DynamicArray()
-		{
-			max_size_ = 1;
-			arr_ = new T[max_size_];
-			elements_in_array_ = 0;
-		};
+		DynamicArray();
 
 		void Add(T elm);
 		T Remove(T elm);
 		T RemoveAt(int index);
 		T Get(int index);
 		void Set(int index, T elm);
-		
-		int Size() { return elements_in_array_; }
-		bool IsEmpty() { return elements_in_array_ == 0; };
-		bool IsFull() { return elements_in_array_ == max_size_; }
-		int MaxSize() { return max_size_; }
+
+		int Size();
+		bool IsEmpty();;
+		bool IsFull();
+		int MaxSize();
 		std::string ToString();
 
 	private:

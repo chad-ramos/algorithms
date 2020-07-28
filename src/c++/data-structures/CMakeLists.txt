@@ -4,7 +4,6 @@ set(This DataStructures)
 
 # Add source to this project's executable.
 set(Headers
-	"dynamic-array.h"
 )
 
 set(Sources

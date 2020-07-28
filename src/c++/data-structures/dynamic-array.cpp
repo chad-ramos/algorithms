@@ -6,6 +6,14 @@
 namespace data_structures
 {
 	template <typename T>
+	DynamicArray<T>::DynamicArray()
+	{
+		max_size_ = 1;
+		arr_ = new T[max_size_];
+		elements_in_array_ = 0;
+	}
+	
+	template <typename T>
 	T DynamicArray<T>::Get(int index)
 	{
 		if (index < 0 || index > elements_in_array_)
@@ -25,6 +33,30 @@ namespace data_structures
 		}
 
 		arr_[index] = elm;
+	}
+
+	template <typename T>
+	int DynamicArray<T>::Size()
+	{
+		return elements_in_array_;
+	}
+
+	template <typename T>
+	bool DynamicArray<T>::IsEmpty()
+	{
+		return elements_in_array_ == 0;
+	}
+
+	template <typename T>
+	bool DynamicArray<T>::IsFull()
+	{
+		return elements_in_array_ == max_size_;
+	}
+
+	template <typename T>
+	int DynamicArray<T>::MaxSize()
+	{
+		return max_size_;
 	}
 
 	template <typename T>
