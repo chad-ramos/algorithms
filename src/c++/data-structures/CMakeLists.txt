@@ -2,15 +2,12 @@
 
 set(This DataStructures)
 
-# Add source to this project's executable.
-set(Headers
-)
-
 set(Sources
 	"dynamic-array.cpp"
+	"linked-list.cpp"
 )
 
-add_library (${This} STATIC ${Headers} ${Sources} "linked-list.h" "linked-list.cpp")
+add_library (${This} STATIC ${Sources} )
 
 # Include sub-projects.
 add_subdirectory ("tests")

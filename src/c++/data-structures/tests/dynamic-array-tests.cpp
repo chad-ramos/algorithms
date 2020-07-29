@@ -10,11 +10,11 @@ TEST(DynamicArray, Size)
 	const int size = 5;
 	int values[size] = { 1, 2, 3, 4, 5 };
 
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size; ++i)
 	{
 		dynamic_array.Add(values[i]);
 	}
-	
+
 	EXPECT_TRUE(dynamic_array.Size() == size);
 }
 

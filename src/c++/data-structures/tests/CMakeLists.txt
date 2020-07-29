@@ -4,6 +4,7 @@ set(This DataStructuresTests)
 
 set(Sources
 	"dynamic-array-tests.cpp"
+	 "linked-list.cpp"
 )
 
 add_executable (${This} ${Sources})
