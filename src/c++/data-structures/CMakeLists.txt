@@ -10,7 +10,7 @@ set(Sources
 	"dynamic-array.cpp"
 )
 
-add_library (${This} STATIC ${Headers} ${Sources})
+add_library (${This} STATIC ${Headers} ${Sources} "linked-list.h" "linked-list.cpp")
 
 # Include sub-projects.
 add_subdirectory ("tests")
