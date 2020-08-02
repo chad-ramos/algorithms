@@ -3,20 +3,24 @@
 namespace data_structures
 {
 	template <typename T>
-	struct LinkedListNode
+	struct DoublyLinkedListNode
 	{
-		T Data
-		LinkedListNode* next;
+		T Data;
+		DoublyLinkedListNode* next;
+		DoublyLinkedListNode* previous;
 	};
-	
+
 	template <typename T>
-	class LinkedList
+	class DoublyLinkedList
 	{
 	public:
+		DoublyLinkedList();
+		~DoublyLinkedList();
+
 		void Add();
 		T Remove(T elm);
 		T RemoveAt(int index);
 	private:
-		
+
 	};
 }

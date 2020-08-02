@@ -4,7 +4,7 @@ set(This DataStructures)
 
 set(Sources
 	"dynamic-array.cpp"
-	"linked-list.cpp"
+	"doubly-linked-list.cpp"
 )
 
 add_library (${This} STATIC ${Sources} )
